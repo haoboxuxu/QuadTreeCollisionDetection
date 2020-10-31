@@ -8,6 +8,8 @@ function setup() {
 		let point = new Point(random(width), random(height));
 		quadTree.insert(point);
 	}
+	let treeDFS = new TresDFS();
+    treeDFS.dfs(quadTree);
 }
 
 function draw() {

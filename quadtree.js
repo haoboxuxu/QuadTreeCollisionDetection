@@ -3,19 +3,19 @@ class QuadTree {
 		this.bounds = bounds;
 		this.cap = cap;
 		this.childPoints = [];
-        this.isDivided = false;
+    this.isDivided = false;
 	}
 
 	insert(point) {
-		if (this.childPoints.length < this.cap) {
-		  this.childPoints.push(point);
-		}else {
-          if (this.isDivided) {
+    if (this.childPoints.length < this.cap) {
+      this.childPoints.push(point);
+    }else {
+          if (!this.isDivided) {
             this.subDivide(); 
             this.isDivided = true;
           }
         }
-	}
+  }
     
     subDivide() {
       let x = this.bounds.x;
