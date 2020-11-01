@@ -7,6 +7,10 @@ class QuadTree {
   }
 
   insert(point) {
+    if (!this.bounds.contain(point)) {
+      return;
+    }
+    
   if (this.childPoints.length < this.cap) {
      this.childPoints.push(point);
   }else {
