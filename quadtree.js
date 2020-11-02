@@ -8,19 +8,20 @@ class QuadTree {
 
   insert(point) {
     if (!this.bounds.contain(point)) {
-      return;
+      return false;
     }
     
   if (this.childPoints.length < this.cap) {
-     this.childPoints.push(point);
+      this.childPoints.push(point);
   }else {
       if (!this.isDivided) {
         this.subDivide();
+        return true;
       }
-      this.topRight.insert(point);
-      this.topLeft.insert(point);
-      this.buttomRight.insert(point);
-      this.buttomLeft.insert(point);
+      return (this.topRight.insert(point) ||
+              this.topLeft.insert(point) ||
+              this.buttomRight.insert(point) ||
+              this.buttomLeft.insert(point));
     }
   }
     
@@ -59,7 +60,7 @@ class QuadTree {
     }
     for (let p of this.childPoints) {
       console.log(p.x + " " + p.y);
-      strokeWeight(5);
+      strokeWeight(3);
       point(p.x, p.y);
     }
   }
